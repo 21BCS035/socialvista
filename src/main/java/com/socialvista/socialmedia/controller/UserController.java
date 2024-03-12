@@ -21,13 +21,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
-
-
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/users")
 
 public class UserController {
     @Autowired
@@ -36,7 +31,7 @@ public class UserController {
     @Autowired
     UserService userService;
      
-    @PostMapping("/createUser")
+    @PostMapping("/users/createUser")
     public User createUser(@RequestBody User user) {
 
         User savedUser = userService.createUser(user);
@@ -44,7 +39,7 @@ public class UserController {
         return savedUser;
     }
 
-    @GetMapping("/getAllUsers")
+    @GetMapping("/api/users/getAllUsers")
     public List<User>getUsers() {
        List<User>users = userRepository.findAll();
 
@@ -52,7 +47,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/getUser/{id}")
+    @GetMapping("/api/users/getUser/{id}")
     public User getUser(@PathVariable("id") Integer id) {
          
       User user = userService.findUserById(id);
@@ -62,7 +57,7 @@ public class UserController {
     }
     
     
-    @PutMapping("/updateUser/{id}")
+    @PutMapping("/api/users/updateUser/{id}")
     public User updatUser(@PathVariable Integer id, @RequestBody User Updateduser) {
        
          User user = userService.updateUser(Updateduser,id);
@@ -71,7 +66,7 @@ public class UserController {
     }
 
 
-    @DeleteMapping("deleteUser/{id}")
+    @DeleteMapping("/api/users/deleteUser/{id}")
     public String deleteUser( @PathVariable("id") Integer id){
         User user = userRepository.findById(id)
         .orElseThrow(()->
@@ -84,7 +79,7 @@ public class UserController {
     }
 
 
-    @PutMapping("followusers/{id1}/{id2}")
+    @PutMapping("/api/users/followusers/{id1}/{id2}")
     public User folloUserHandler(@PathVariable Integer id1, @PathVariable Integer id2) {
        
          User user = userService.followUser(id1, id2);
@@ -92,7 +87,7 @@ public class UserController {
         return user;
     }
 
-    @GetMapping("searchUser")
+    @GetMapping("/api/users/searchUser")
     public List<User> searchUser(@RequestParam("query") String query) {
        List<User> users = userService.searchUser(query);
        return users;

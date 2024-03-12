@@ -1,5 +1,6 @@
 package com.socialvista.socialmedia.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,10 @@ public class PostServiceImplementation implements PostService {
           newPost.setCaption(post.getCaption());
           newPost.setImage(post.getImage());
           newPost.setVideo(post.getVideo());
-          newPost.setUser(post.getUser());
+          newPost.setCreatedAt(LocalDateTime.now());
+          newPost.setUser(user);
 
-          return newPost;
+          return postRepository.save(newPost);
 
     }
 
@@ -103,12 +105,12 @@ public class PostServiceImplementation implements PostService {
         UserPost post = findPostById(postId);
         User user = userService.findUserById(userId);
 
-        if(post.getLiked().contains(user)){
-            post.getLiked().remove(user);
+        if(post.getLikedByUsers().contains(user)){
+            post.getLikedByUsers().remove(user);
         }
 
         else{
-            post.getLiked().add(user);
+            post.getLikedByUsers().add(user);
         }
 
        

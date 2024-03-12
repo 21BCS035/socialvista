@@ -4,12 +4,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.socialvista.socialmedia.models.User;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -40,8 +39,11 @@ public class UserPost {
     @ManyToOne
     private User user;
 
-    @OneToMany
-    private List<User>liked = new ArrayList<>();
+    // @OneToMany
+    // private List<User>liked = new ArrayList<>();
+
+     @ManyToMany
+    private List<User> likedByUsers = new ArrayList<>();
 
     private LocalDateTime createdAt;
 
