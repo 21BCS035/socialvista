@@ -16,4 +16,6 @@ public interface UserService {
    public User updateUser(User user, Integer id);
 
    public List<User>searchUser(String query);
+
+   public User findUserByJwt(String Jwt);
 }

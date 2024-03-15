@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.exception.ResourceNotFoundException;
+import com.socialvista.socialmedia.config.JwtProvider;
 import com.socialvista.socialmedia.models.User;
 import com.socialvista.socialmedia.repository.UserRepository;
 
@@ -102,6 +103,16 @@ public class UserServiceImplementation implements UserService {
     public List<User> searchUser(String query) {
         
         return userRepository.searchUser(query);
+    }
+
+    @Override
+    public User findUserByJwt(String Jwt) {
+       
+        String email = JwtProvider.getEmailFromJwtToken(Jwt);
+        
+        User user = userRepository.findByEmail(email);
+        
+        return user;
     }
     
 }
