@@ -50,9 +50,13 @@ public class UserController {
     }
     
     
-    @PutMapping("/api/users/updateUser/{id}")
-    public User updatUser(@PathVariable Integer id, @RequestBody User Updateduser) {
+    @PutMapping("/api/users/updateUser/")
+    public User updatUser(@RequestHeader("Authorization") String Token,@RequestBody User Updateduser) {
        
+      User userProfile = userService.findUserByJwt(Token);
+
+      int id = userProfile.getId();
+
          User user = userService.updateUser(Updateduser,id);
 
          return user;
@@ -72,10 +76,11 @@ public class UserController {
     }
 
 
-    @PutMapping("/api/users/followusers/{id1}/{id2}")
-    public User folloUserHandler(@PathVariable Integer id1, @PathVariable Integer id2) {
+    @PutMapping("/api/users/followusers/{id2}")
+    public User folloUserHandler(@RequestHeader("Authorization") String Token, @PathVariable Integer id2) {
        
-         User user = userService.followUser(id1, id2);
+      User userProfile = userService.findUserByJwt(Token);
+         User user = userService.followUser(userProfile.getId(), id2);
 
         return user;
     }
@@ -91,6 +96,8 @@ public class UserController {
     public User getUserFromToken(@RequestHeader("Authorization") String Token){
       
       User user = userService.findUserByJwt(Token);
+
+      user.setPassword(null);
 
       return user;
 
