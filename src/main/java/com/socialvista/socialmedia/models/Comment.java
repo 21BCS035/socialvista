@@ -1,8 +1,8 @@
 package com.socialvista.socialmedia.models;
 
+import java.util.List;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,24 +20,23 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity
 
 @Table(name = "comments")
 public class Comment {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String content;
-
+     
     @ManyToOne
     private User user;
-
+     
     @ManyToMany
-    private List<User>likedByUsers = new ArrayList<>();
+    private List<User>liked = new ArrayList<>();
 
     private LocalDateTime createdAt;
-    
+
 }

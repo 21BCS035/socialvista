@@ -46,6 +46,9 @@ public class UserPost {
     private List<User> likedByUsers = new ArrayList<>();
 
     private LocalDateTime createdAt;
+     
+    @OneToMany
+    private List<Comment>comments = new ArrayList<>();
 
     
 }
