@@ -18,7 +18,6 @@ import com.socialvista.socialmedia.service.PostService;
 import com.socialvista.socialmedia.service.UserService;
 import com.socialvista.socialmedia.models.User;
 import com.socialvista.socialmedia.models.UserPost;
-import com.socialvista.socialmedia.repository.PostRepository;
 import com.socialvista.socialmedia.response.ApiResponse;
 
 import lombok.AllArgsConstructor;
