@@ -7,5 +7,5 @@ public interface CommentService {
 
     public Comment likComment(Integer commentId,Integer userId);
 
-    public Comment findCommentById(Integer commentId);
+    public Comment findCommentById(Integer commentId) ;
 }

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.exception.ResourceNotFoundException;
 import com.socialvista.socialmedia.models.Comment;
 import com.socialvista.socialmedia.models.User;
 import com.socialvista.socialmedia.models.UserPost;
@@ -50,14 +51,33 @@ public class CommentServiceImplementation implements CommentService {
 
     @Override
     public Comment likComment(Integer commentId, Integer userId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'likComment'");
+
+        Comment comment = findCommentById(commentId);
+
+        User user = userService.findUserById(userId);
+
+        if(!comment.getLiked().contains(user)){
+             comment.getLiked().add(user);
+
+        }
+
+        else{
+            comment.getLiked().remove(user);
+        }
+        
+        return commentRepository.save(comment);
     }
 
     @Override
     public Comment findCommentById(Integer commentId) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findCommentById'");
+       
+
+        Comment comment = commentRepository.findById(commentId).orElseThrow(()->
+        new ResourceNotFoundException("No comment found with id : " + commentId)
+        );
+        
+        return comment;
+
     }
     
 }
