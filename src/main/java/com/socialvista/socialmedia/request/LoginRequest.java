@@ -1,4 +1,4 @@
-package com.socialvista.socialmedia.controller;
+package com.socialvista.socialmedia.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

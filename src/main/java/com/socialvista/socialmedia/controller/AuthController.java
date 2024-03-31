@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.socialvista.socialmedia.config.JwtProvider;
 import com.socialvista.socialmedia.models.User;
 import com.socialvista.socialmedia.repository.UserRepository;
+import com.socialvista.socialmedia.request.LoginRequest;
 import com.socialvista.socialmedia.service.CustomUserDetailsService;
 import com.socialvista.socialmedia.service.UserService;
 
