@@ -3,11 +3,13 @@ package com.socialvista.socialmedia.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.socialvista.socialmedia.models.Reels;
 import com.socialvista.socialmedia.models.User;
 import com.socialvista.socialmedia.repository.ReelsRepository;
 
+@Service
 public class ReelsServiceImplementation implements ReelsService{
 
     @Autowired
@@ -22,7 +24,7 @@ public class ReelsServiceImplementation implements ReelsService{
         Reels createReel = new Reels();
 
         createReel.setTitle(reel.getTitle());
-        createReel.setUser(reel.getUser());
+        createReel.setUser(user);
         createReel.setVideo(reel.getVideo());
         
         return reelsRepository.save(createReel);
