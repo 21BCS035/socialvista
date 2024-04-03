@@ -13,7 +13,8 @@ public interface ChatRepository extends JpaRepository<Chat,Integer> {
     
     public List<Chat> findByUsersId(Integer userId);
 
-    @Query("select c from Chat c Where : user2 Member of c.users And : user1 Member of c.users")
-    public Chat findChatByUsersId(@Param("user2") User user2 , @Param("user1") User user1);
+    @Query("SELECT c FROM Chat c WHERE :user1 MEMBER OF c.users AND :user2 MEMBER OF c.users")
+     Chat findChatByUsersId(@Param("user1") User user1, @Param("user2") User user2);
+
 
 }
