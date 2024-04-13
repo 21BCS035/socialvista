@@ -11,7 +11,7 @@ import com.socialvista.socialmedia.models.User;
 import com.socialvista.socialmedia.models.UserPost;
 import com.socialvista.socialmedia.repository.CommentRepository;
 import com.socialvista.socialmedia.repository.PostRepository;
-import com.socialvista.socialmedia.repository.UserRepository;
+
 
 @Service
 public class CommentServiceImplementation implements CommentService {
