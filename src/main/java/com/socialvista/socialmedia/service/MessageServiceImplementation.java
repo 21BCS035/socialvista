@@ -12,6 +12,9 @@ import com.socialvista.socialmedia.models.User;
 import com.socialvista.socialmedia.repository.ChatRepository;
 import com.socialvista.socialmedia.repository.MessageRepository;
 
+
+
+
 @Service
 public class MessageServiceImplementation implements MessageService {
 
@@ -27,6 +30,7 @@ public class MessageServiceImplementation implements MessageService {
     public Message createMessage(User user, Integer chatId, Message req) {
        
         Chat chat = chatService.findChatById(chatId);
+       
         Message message = new Message();
          
         message.setChat(chat);

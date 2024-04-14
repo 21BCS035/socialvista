@@ -50,6 +50,11 @@ public class User {
     @ManyToMany
     private List<UserPost> savedPost = new ArrayList<>();
 
+    public User orElseThrow(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'orElseThrow'");
+    }
+
 
 }
 

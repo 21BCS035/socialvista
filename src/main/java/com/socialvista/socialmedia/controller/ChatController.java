@@ -28,6 +28,7 @@ public class ChatController {
     public Chat createChat (@RequestHeader("Authorization") String jwt,@RequestBody CreateChatRequest chatRequest){
         User user1 = userService.findUserByJwt(jwt);
         User user2 = userService.findUserById(chatRequest.getUserId());
+        
         Chat chat = chatService.createChat(user1, user2);
         return chat;
     }
